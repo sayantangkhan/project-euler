@@ -1,0 +1,11 @@
+Num reflections = 1000001
+
+Euclidean algorithm, serial, filtering = 6.8 ms
+Euclidean algorithm, parallel, no filtering = 1.2 ms
+Binary shift algorithm, parallel, no filtering = 0.943 ms
+
+Num reflections = 12017639147
+
+Euclidean algorithm, serial, filtering = 138 s
+Euclidean algorithm, parallel, no filtering = 22.6 s
+Binary shift algorithm, parallel, no filtering = 17.1 s

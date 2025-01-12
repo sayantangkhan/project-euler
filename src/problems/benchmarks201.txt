@@ -1,0 +1,6 @@
+Range [1, 80]
+Subset size 30
+
+Hashing subset_slice: 56s
+Hashing subset_index: 25s
+Hashing subset_index with left and right branches swapped: 38s
