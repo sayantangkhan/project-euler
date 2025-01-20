@@ -1,4 +1,4 @@
-use crate::utils::gcd::{euclidean_gcd, fast_gcd};
+use crate::utils::gcd::fast_gcd;
 use rayon::prelude::*;
 
 pub fn problem202(num_reflections: usize) -> usize {

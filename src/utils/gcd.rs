@@ -43,7 +43,7 @@ pub(crate) fn fast_gcd(mut u: usize, mut v: usize) -> usize {
     }
 }
 
-pub(crate) fn euclidean_gcd(mut n: usize, mut m: usize) -> usize {
+pub(crate) fn _euclidean_gcd(mut n: usize, mut m: usize) -> usize {
     if m >= n {
         (m, n) = (n, m);
     }
@@ -66,7 +66,7 @@ fn test_euclidean_gcd() {
     let gcds = &[1, 2, 3];
 
     for (p, g) in zip(pairs.into_iter(), gcds.into_iter()) {
-        assert_eq!(euclidean_gcd(p.0, p.1), *g);
+        assert_eq!(_euclidean_gcd(p.0, p.1), *g);
     }
 }
 
