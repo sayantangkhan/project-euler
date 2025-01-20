@@ -132,9 +132,8 @@ fn count_sum<'a>(
             }
         }
         PossibleSum::Zero => {
-            let exists_uniquely_c1 =
-                count_sum_memoized(target_sum, subset_size, &sorted_numset[1..], cache);
-            exists_uniquely_c1
+            
+            count_sum_memoized(target_sum, subset_size, &sorted_numset[1..], cache)
         }
     };
 
