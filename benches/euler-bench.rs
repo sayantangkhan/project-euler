@@ -35,11 +35,11 @@ fn problem_60_bench(c: &mut Criterion) {
 // }
 
 fn problem_202_easy_bench(c: &mut Criterion) {
-    c.bench_function("Problem 201 easy bench", |b| b.iter(|| problem202(1000001)));
+    c.bench_function("Problem 202 easy bench", |b| b.iter(|| problem202(1000001)));
 }
 
 fn problem_202_hard_bench(c: &mut Criterion) {
-    c.bench_function("Problem 201 hard bench", |b| {
+    c.bench_function("Problem 202 hard bench", |b| {
         b.iter(|| problem202(12017639147))
     });
 }
