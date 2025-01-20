@@ -44,12 +44,17 @@ fn problem_202_hard_bench(c: &mut Criterion) {
     });
 }
 
+fn problem_209_bench(c: &mut Criterion) {
+    c.bench_function("Problem 209 bench", |b| b.iter(|| problem209()));
+}
+
 criterion_group!(
     benches,
     // problem_201_medium_bench,
     // problem_201_medium_hard_bench
     problem_202_easy_bench,
-    problem_202_hard_bench,
+    // problem_202_hard_bench,
+    problem_209_bench,
 );
 
 criterion_main!(benches);
