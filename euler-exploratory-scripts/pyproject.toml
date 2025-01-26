@@ -1,0 +1,10 @@
+[project]
+name = "euler-exploratory-scripts"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "ipython>=8.18.1",
+    "ruff>=0.9.3",
+]
