@@ -57,7 +57,7 @@ fn orbit_decomposition() -> Vec<Vec<Point>> {
         if !seen.contains(&point) {
             let orbit = compute_orbit(point);
             for p in &orbit {
-                seen.insert(p.clone());
+                seen.insert(*p);
             }
             orbits.push(orbit);
         }
@@ -69,7 +69,7 @@ fn _count_assignments_bootstrap(orbit_size: usize) -> usize {
     // This turns out to be F(n) + F(n-2), where F is the Fibonacci function, and n is the
     // orbit_size
     if (orbit_size == 0) | (orbit_size == 1) {
-        return 1;
+        1
     } else {
         _count_assignments(orbit_size - 1, true) + _count_assignments(orbit_size - 2, false)
     }
@@ -77,7 +77,7 @@ fn _count_assignments_bootstrap(orbit_size: usize) -> usize {
 
 fn _count_assignments(orbit_size: usize, starts_with_zero: bool) -> usize {
     if orbit_size == 0 {
-        return 1;
+        1
     } else if orbit_size == 1 {
         match starts_with_zero {
             true => {
