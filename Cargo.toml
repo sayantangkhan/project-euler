@@ -10,6 +10,7 @@ anyhow = "1.0"
 thiserror = "1.0"
 itertools = "0.13.0"
 rayon = "1.10"
+quickcheck = "1.0.3"
 
 [dev-dependencies]
 criterion = "0.5"

@@ -1,9 +1,14 @@
+#[macro_use]
+#[cfg(test)]
+extern crate quickcheck;
+
 mod problems;
 mod utils;
 
 use anyhow::{Context, Result};
 pub use problems::p201::problem201;
 pub use problems::p202::problem202;
+pub use problems::p208::problem208;
 pub use problems::p209::problem209;
 pub use problems::p60::problem60;
 use std::env;

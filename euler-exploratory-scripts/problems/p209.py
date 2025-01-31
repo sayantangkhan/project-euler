@@ -35,7 +35,7 @@ def orbit_decomposition():
     seen = set()
     orbits = []
     for point in product(*[[0,1] for _ in range(6)]):
-        if not point in seen:
+        if point not in seen:
             orbit = generate_orbit(point)
             orbits.append(orbit)
             seen = seen.union(set(orbit))
