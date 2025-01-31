@@ -1,3 +1,4 @@
+use rayon::prelude::*;
 use std::collections::HashMap;
 
 pub fn problem208(path_length: usize) -> usize {
@@ -5,8 +6,8 @@ pub fn problem208(path_length: usize) -> usize {
     let mut count = HashMap::new();
     count.insert(initial_cotangent_vector, 1);
 
-    for _ in 0..path_length {
-        count = compute_path_count_iteratively(&count);
+    for i in 0..path_length {
+        count = compute_path_count_iteratively(&count, path_length - i);
     }
     *count.get(&initial_cotangent_vector).unwrap_or(&0)
 }
@@ -194,17 +195,20 @@ impl CotangentVector {
 
 fn compute_path_count_iteratively(
     current_path_count: &HashMap<CotangentVector, usize>,
+    steps_left: usize,
 ) -> HashMap<CotangentVector, usize> {
     let next_left = current_path_count
-        .iter()
+        .par_iter()
         .map(|(n, _)| n.move_forward_left().unwrap());
     let next_right = current_path_count
-        .iter()
+        .par_iter()
         .map(|(n, _)| n.move_forward_right().unwrap());
 
     let next = next_left.chain(next_right);
 
-    let next_count = next.map(|n| (n, path_sum(n, current_path_count)));
+    let next_count = next
+        .filter(|n| filter_node(n, steps_left))
+        .map(|n| (n, path_sum(n, current_path_count)));
     next_count.collect()
 }
 
@@ -214,6 +218,17 @@ fn path_sum(n: CotangentVector, current_path_count: &HashMap<CotangentVector, us
     let back_left_count = current_path_count.get(&back_left).unwrap_or(&0);
     let back_right_count = current_path_count.get(&back_right).unwrap_or(&0);
     *back_left_count + *back_right_count
+}
+
+fn filter_node(n: &CotangentVector, steps_left: usize) -> bool {
+    // If the L\infty norm of n.basepoint is greater than steps left, we can ignore it
+    let pos_abs = [
+        n.position.0.abs(),
+        n.position.1.abs(),
+        n.position.2.abs(),
+        n.position.3.abs(),
+    ];
+    (*pos_abs.iter().max().unwrap() as usize) <= steps_left
 }
 
 #[cfg(test)]
