@@ -34,16 +34,8 @@ fn main() -> Result<()> {
             println!("{}", res);
         }
     } else if input_args.problem_num == 208 {
-        if input_args.input_parameter == 1 {
-            let res = problem208(5);
-            println!("{}", res);
-        } else if input_args.input_parameter == 2 {
-            let res = problem208(25);
-            println!("{}", res);
-        } else if input_args.input_parameter == 3 {
-            let res = problem208(70);
-            println!("{}", res);
-        }
+        let res = problem208(input_args.input_parameter * 5);
+        println!("{}", res);
     } else if input_args.problem_num == 209 {
         let res = problem209();
         println!("{}", res);
